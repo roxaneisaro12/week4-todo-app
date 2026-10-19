@@ -1,11 +1,11 @@
 
 @import "tailwindcss";
 
-/* Use a clean, consistent font and warm neutral colors. */
+/* Set the default light theme using blush and burgundy colors. */
 :root {
   font-family: Inter, "Segoe UI", Arial, sans-serif;
-  color: #292d29;
-  background: #f8f7f2;
+  color: #4a2634;
+  background: #f7f3f5;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -22,7 +22,9 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #f8f7f2;
+  background: #f7f3f5;
+  color: #4a2634;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* Keep form controls consistent with the rest of the interface. */
@@ -41,18 +43,95 @@ button {
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 2px solid #526653;
+  outline: 2px solid #c77b98;
   outline-offset: 2px;
 }
 
-/* Use forest green for completed-task checkboxes. */
+/* Use burgundy for completed-task checkboxes. */
 input[type="checkbox"] {
-  accent-color: #34483b;
+  accent-color: #762d45;
 }
 
 /* Prevent long chore names from breaking the layout. */
 li {
   overflow-wrap: anywhere;
+}
+
+/* ---------------- DARK MODE ---------------- */
+
+/* Set the dark page background and text. */
+html.dark,
+html.dark body {
+  background: #21171d !important;
+  color: #f7eaf0 !important;
+  color-scheme: dark;
+}
+
+/* Darken the header and main content panels. */
+html.dark header,
+html.dark section,
+html.dark article,
+html.dark [class*="bg-white"],
+html.dark [class*="bg-[#FFFCFD"] {
+  background-color: #30212a !important;
+  border-color: #573847 !important;
+}
+
+/* Darken the empty-state panel. */
+html.dark #empty-state {
+  background-color: #281c23 !important;
+  border-color: #725064 !important;
+}
+
+/* Darken text inputs while keeping them readable. */
+html.dark input:not([type="checkbox"]),
+html.dark select {
+  background-color: #241921 !important;
+  color: #f7eaf0 !important;
+  border-color: #725064 !important;
+}
+
+/* Keep placeholder text readable. */
+html.dark input::placeholder {
+  color: #c5aab8 !important;
+}
+
+/* Adjust ordinary text to soft pink or muted rose. */
+html.dark [class*="text-[#292D29"],
+html.dark [class*="text-[#4A2634"],
+html.dark [class*="text-[#762D45"],
+html.dark [class*="text-[#34483B"],
+html.dark [class*="text-[#526653"],
+html.dark [class*="text-[#795E69"] {
+  color: #f7eaf0 !important;
+}
+
+html.dark [class*="text-[#737A70"],
+html.dark [class*="text-[#A58D98"] {
+  color: #c5aab8 !important;
+}
+
+/* Make pale rose controls and badges darker in dark mode. */
+html.dark [class*="bg-[#F7F3F5"],
+html.dark [class*="bg-[#F9E2E7"],
+html.dark [class*="bg-[#F0F1EB"] {
+  background-color: #49303e !important;
+}
+
+/* Keep buttons and selected filters distinct. */
+html.dark #theme-toggle {
+  background-color: #49303e !important;
+  color: #ffdce8 !important;
+  border-color: #95647c !important;
+}
+
+html.dark .filter-button[aria-pressed="true"] {
+  background-color: #a64f70 !important;
+  color: #ffffff !important;
+}
+
+html.dark .filter-button[aria-pressed="false"] {
+  color: #f7eaf0 !important;
 }
 
 /* Respect users who prefer less motion. */
@@ -66,3 +145,87 @@ li {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Dark mode: deep forest green with soft sage accents. */
+html.dark,
+html.dark body {
+  background: #18211c !important;
+  color: #edf2eb !important;
+  color-scheme: dark;
+}
+
+/* Darken the header, cards, and main panels. */
+html.dark header,
+html.dark section,
+html.dark article {
+  background-color: #26372c;
+  border-color: #46594a;
+}
+
+/* Keep headings and ordinary text readable. */
+html.dark h1,
+html.dark h2,
+html.dark label,
+html.dark header span,
+html.dark article p {
+  color: #edf2eb;
+}
+
+/* Use softer sage for supporting text. */
+html.dark p,
+html.dark footer {
+  color: #bdcbbb;
+}
+
+/* Style text inputs and dropdowns for dark mode. */
+html.dark input:not([type="checkbox"]),
+html.dark select {
+  background-color: #1d2921;
+  color: #edf2eb;
+  border-color: #526653;
+}
+
+html.dark input::placeholder {
+  color: #a9b8a8;
+}
+
+/* Make task cards readable in dark mode. */
+html.dark #task-list li {
+  background-color: #26372c;
+  border-color: #526653;
+}
+
+html.dark #task-list li span {
+  color: #edf2eb;
+}
+
+/* Keep the empty-state panel distinct. */
+html.dark #empty-state {
+  background-color: #1d2921;
+  border-color: #526653;
+}
+
+html.dark #empty-state p {
+  color: #bdcbbb;
+}
+
+/* Style the theme toggle. */
+html.dark #theme-toggle {
+  background-color: #34483b;
+  color: #ffffff;
+  border-color: #718571;
+}
+
+/* Keep unselected filters visible. */
+html.dark .filter-button[aria-pressed="false"] {
+  background-color: #34483b;
+  color: #edf2eb;
+}
+
+/* Preserve visible keyboard focus. */
+html.dark button:focus-visible,
+html.dark input:focus-visible,
+html.dark select:focus-visible {
+  outline-color: #a9bca9;
+}
+

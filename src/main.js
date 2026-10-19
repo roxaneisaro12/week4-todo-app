@@ -16,6 +16,33 @@ const totalStat = document.querySelector('#total-stat');
 const activeStat = document.querySelector('#active-stat');
 const completedStat = document.querySelector('#completed-stat');
 
+const themeToggle = document.querySelector('#theme-toggle');
+
+// Restore the saved theme, using light mode by default.
+let currentTheme = localStorage.getItem('family-chores-theme') || 'light';
+
+// Apply the selected theme to the page.
+function applyTheme() {
+  const isDark = currentTheme === 'dark';
+
+  document.documentElement.classList.toggle('dark', isDark);
+  themeToggle.textContent = isDark ? 'Light mode' : 'Dark mode';
+  themeToggle.setAttribute(
+    'aria-label',
+    isDark ? 'Switch to light mode' : 'Switch to dark mode'
+  );
+  themeToggle.setAttribute('aria-pressed', String(isDark));
+}
+
+// Switch themes and remember the user's choice.
+function toggleTheme() {
+  currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+  localStorage.setItem('family-chores-theme', currentTheme);
+  applyTheme();
+}
+
+
 // Restore saved chores and the selected filter from localStorage.
 let tasks = JSON.parse(localStorage.getItem('family-chores-tasks') || '[]');
 let currentFilter = localStorage.getItem('family-chores-filter') || 'all';
@@ -352,5 +379,9 @@ taskSearch.addEventListener('input', () => {
 // Connect the Clear Completed button.
 clearCompletedButton.addEventListener('click', clearCompleted);
 
-// Display saved chores when the page loads.
+// Connect the dark-mode button.
+themeToggle.addEventListener('click', toggleTheme);
+
+// Restore the saved theme and display chores on page load.
+applyTheme();
 render();
