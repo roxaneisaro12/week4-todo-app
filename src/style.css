@@ -1,22 +1,56 @@
 
 @import "tailwindcss";
 
+/* Set the app's default colours and typography. */
 :root {
   font-family: Arial, Helvetica, sans-serif;
-  color: #26352d;
-  background: #f7f7f0;
+  color: #4a2634;
+  background: #f7f3f5;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Make sizing predictable for every element. */
 * {
   box-sizing: border-box;
 }
 
+/* Remove default spacing and fill the screen. */
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background: #f7f3f5;
+}
+
+/* Keep form controls consistent with the design. */
+button,
+input,
+select {
+  font: inherit;
+}
+
+/* Make buttons feel responsive when hovered. */
+button {
+  cursor: pointer;
+}
+
+/* Use a clear focus indicator for keyboard users. */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #c77b98;
+  outline-offset: 3px;
+}
+
+/* Make completed chores visibly different. */
+input[type="checkbox"] {
+  accent-color: #762d45;
+}
+
+/* Prevent long chore names from overflowing their cards. */
+li {
+  overflow-wrap: anywhere;
 }

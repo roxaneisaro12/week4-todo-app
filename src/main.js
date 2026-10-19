@@ -1,7 +1,7 @@
 
 import './style.css';
 
-// Find the HTML elements used by the app.
+// Select the page elements used by the app.
 const taskForm = document.querySelector('#task-form');
 const taskInput = document.querySelector('#task-input');
 const taskPriority = document.querySelector('#task-priority');
@@ -12,32 +12,35 @@ const emptyState = document.querySelector('#empty-state');
 const taskSearch = document.querySelector('#task-search');
 const filterButtons = document.querySelectorAll('.filter-button');
 const clearCompletedButton = document.querySelector('#clear-completed');
+const totalStat = document.querySelector('#total-stat');
+const activeStat = document.querySelector('#active-stat');
+const completedStat = document.querySelector('#completed-stat');
 
-// Restore saved chores and filter from localStorage.
+// Restore saved chores and the selected filter from localStorage.
 let tasks = JSON.parse(localStorage.getItem('family-chores-tasks') || '[]');
 let currentFilter = localStorage.getItem('family-chores-filter') || 'all';
 let searchText = '';
 let editingId = null;
 
-// Saves the current chores and filter in the browser.
+// Save chores and the current filter in the browser.
 function saveState() {
   localStorage.setItem('family-chores-tasks', JSON.stringify(tasks));
   localStorage.setItem('family-chores-filter', currentFilter);
 }
 
-// Shows an error message below the chore input.
+// Display a validation message below the chore input.
 function showError(message) {
   formError.textContent = message;
   formError.classList.remove('hidden');
 }
 
-// Clears the form error message.
+// Clear the form validation message.
 function clearError() {
   formError.textContent = '';
   formError.classList.add('hidden');
 }
 
-// Returns chores matching the current filter and search.
+// Return chores matching the selected filter and search.
 function getVisibleTasks() {
   return tasks.filter((task) => {
     const matchesFilter =
@@ -53,23 +56,28 @@ function getVisibleTasks() {
   });
 }
 
-// Builds and displays the chore list and updates the counter.
+// Create the task cards and update the statistics.
 function render() {
   taskList.replaceChildren();
 
   const visibleTasks = getVisibleTasks();
   const remaining = tasks.filter((task) => !task.done).length;
+  const completed = tasks.length - remaining;
 
   taskCounter.textContent =
     `${remaining} task${remaining === 1 ? '' : 's'} left`;
 
+  totalStat.textContent = tasks.length;
+  activeStat.textContent = remaining;
+  completedStat.textContent = completed;
+
   visibleTasks.forEach((task) => {
     const item = document.createElement('li');
     item.className =
-      'flex flex-col gap-3 rounded-xl border border-[#e3e8df] p-4 sm:flex-row sm:items-center sm:justify-between';
+      'flex flex-col gap-4 rounded-2xl border border-[#EAD8DF] bg-[#FFFCFD] p-4 shadow-sm transition hover:border-[#DAB4C3] hover:shadow-md sm:flex-row sm:items-center sm:justify-between';
 
     const label = document.createElement('label');
-    label.className = 'flex min-w-0 items-center gap-3';
+    label.className = 'flex min-w-0 flex-1 items-center gap-3';
 
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
@@ -77,7 +85,8 @@ function render() {
     checkbox.dataset.action = 'toggle';
     checkbox.dataset.id = task.id;
     checkbox.setAttribute('aria-label', `Complete ${task.text}`);
-    checkbox.className = 'size-5 shrink-0 accent-[#42634c]';
+    checkbox.className =
+      'size-5 shrink-0 cursor-pointer accent-[#762D45]';
 
     label.append(checkbox);
 
@@ -90,7 +99,7 @@ function render() {
       editInput.dataset.id = task.id;
       editInput.setAttribute('aria-label', 'Edit chore name');
       editInput.className =
-        'min-w-0 flex-1 rounded-lg border border-[#d8e0d5] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#66856b]';
+        'min-w-0 flex-1 rounded-lg border border-[#DAB4C3] bg-white px-3 py-2 text-sm text-[#4A2634] outline-none focus:ring-2 focus:ring-[#C77B98]/30';
 
       label.append(editInput);
       setTimeout(() => {
@@ -101,8 +110,8 @@ function render() {
       const taskText = document.createElement('span');
       taskText.textContent = task.text;
       taskText.className = task.done
-        ? 'break-words text-sm text-gray-400 line-through'
-        : 'break-words text-sm font-medium text-[#26352d]';
+        ? 'break-words text-sm text-[#A58D98] line-through'
+        : 'break-words text-sm font-semibold text-[#4A2634]';
 
       label.append(taskText);
     }
@@ -112,16 +121,16 @@ function render() {
       task.priority.charAt(0).toUpperCase() + task.priority.slice(1);
 
     const priorityStyles = {
-      high: 'bg-red-100 text-red-800',
-      medium: 'bg-amber-100 text-amber-800',
-      low: 'bg-green-100 text-green-800',
+      high: 'bg-[#762D45] text-white',
+      medium: 'bg-[#F9E2E7] text-[#762D45]',
+      low: 'bg-[#F7F3F5] text-[#795E69] border border-[#EAD8DF]',
     };
 
     priority.className =
-      `self-start rounded-full px-3 py-1 text-xs font-semibold ${priorityStyles[task.priority] || priorityStyles.medium}`;
+      `self-start rounded-full px-3 py-1.5 text-xs font-bold ${priorityStyles[task.priority] || priorityStyles.medium}`;
 
     const actions = document.createElement('div');
-    actions.className = 'flex gap-2';
+    actions.className = 'flex shrink-0 gap-2';
 
     const editButton = document.createElement('button');
     editButton.type = 'button';
@@ -129,7 +138,7 @@ function render() {
     editButton.dataset.action = editingId === task.id ? 'save' : 'edit';
     editButton.dataset.id = task.id;
     editButton.className =
-      'rounded-lg bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-300';
+      'rounded-lg border border-[#E2C7D1] bg-white px-3 py-2 text-sm font-semibold text-[#762D45] transition hover:bg-[#F9E2E7] focus:outline-none focus:ring-2 focus:ring-[#C77B98]';
 
     const deleteButton = document.createElement('button');
     deleteButton.type = 'button';
@@ -137,18 +146,26 @@ function render() {
     deleteButton.dataset.action = 'delete';
     deleteButton.dataset.id = task.id;
     deleteButton.className =
-      'rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-700 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-300';
+      'rounded-lg px-3 py-2 text-sm font-semibold text-[#9B526D] transition hover:bg-[#F9E2E7] focus:outline-none focus:ring-2 focus:ring-[#C77B98]';
 
     actions.append(editButton, deleteButton);
     item.append(label, priority, actions);
     taskList.append(item);
   });
 
-  emptyState.textContent = tasks.length === 0
-    ? 'Your home is a blank canvas. Add your first chore to get started.'
-    : visibleTasks.length === 0
-      ? 'No chores match this filter or search. Try another one!'
-      : '';
+  if (tasks.length === 0) {
+    emptyState.innerHTML = `
+      <span class="mx-auto flex size-12 items-center justify-center rounded-2xl bg-[#F9E2E7] text-2xl text-[#762D45]" aria-hidden="true">♡</span>
+      <p class="mt-4 font-semibold text-[#762D45]">A fresh start</p>
+      <p class="mt-2 text-sm leading-6 text-[#795E69]">Your chore list is empty. Add your first task and make today a little easier.</p>
+    `;
+  } else if (visibleTasks.length === 0) {
+    emptyState.innerHTML = `
+      <span class="mx-auto flex size-12 items-center justify-center rounded-2xl bg-[#F9E2E7] text-2xl text-[#762D45]" aria-hidden="true">⌕</span>
+      <p class="mt-4 font-semibold text-[#762D45]">No chores found</p>
+      <p class="mt-2 text-sm leading-6 text-[#795E69]">Try another search or choose a different filter.</p>
+    `;
+  }
 
   emptyState.classList.toggle('hidden', visibleTasks.length > 0);
 
@@ -156,14 +173,14 @@ function render() {
     const selected = button.dataset.filter === currentFilter;
 
     button.setAttribute('aria-pressed', String(selected));
-    button.classList.toggle('bg-[#42634c]', selected);
+    button.classList.toggle('bg-[#762D45]', selected);
     button.classList.toggle('text-white', selected);
-    button.classList.toggle('bg-[#f0f3ed]', !selected);
-    button.classList.toggle('text-[#42634c]', !selected);
+    button.classList.toggle('bg-[#F7F3F5]', !selected);
+    button.classList.toggle('text-[#762D45]', !selected);
   });
 }
 
-// Validates and adds a new chore to the state.
+// Validate and add a new chore to the task array.
 function addTask(event) {
   event.preventDefault();
 
@@ -177,6 +194,7 @@ function addTask(event) {
 
   if (text.length > 100) {
     showError('A chore cannot exceed 100 characters.');
+    taskInput.focus();
     return;
   }
 
@@ -195,7 +213,7 @@ function addTask(event) {
   taskInput.focus();
 }
 
-// Changes whether a chore is completed.
+// Toggle whether a chore is completed.
 function toggleTask(id) {
   const task = tasks.find((item) => item.id === id);
   if (!task) return;
@@ -205,18 +223,20 @@ function toggleTask(id) {
   render();
 }
 
-// Starts inline editing for a chore.
+// Start editing a chore inline.
 function editTask(id) {
   editingId = id;
   clearError();
   render();
 }
 
-// Saves the edited chore after validation.
+// Validate and save the edited chore.
 function saveEdit(id) {
   const input = taskList.querySelector(
     `input[data-action="edit-input"][data-id="${id}"]`
   );
+
+  if (!input) return;
 
   const text = input.value.trim();
 
@@ -242,14 +262,14 @@ function saveEdit(id) {
   render();
 }
 
-// Cancels editing without changing the saved chore.
+// Cancel editing without changing the original chore.
 function cancelEdit() {
   editingId = null;
   clearError();
   render();
 }
 
-// Deletes a chore after the user confirms.
+// Delete a chore after the user confirms.
 function deleteTask(id) {
   if (!confirm('Are you sure you want to delete this chore?')) return;
 
@@ -261,7 +281,7 @@ function deleteTask(id) {
   render();
 }
 
-// Removes all completed chores after confirmation.
+// Remove completed chores after confirmation.
 function clearCompleted() {
   const completedCount = tasks.filter((task) => task.done).length;
 
@@ -275,19 +295,20 @@ function clearCompleted() {
   tasks = tasks.filter((task) => !task.done);
   saveState();
   render();
+  clearError();
 }
 
-// Adds a chore when the form is submitted.
+// Add chores when the form is submitted.
 taskForm.addEventListener('submit', addTask);
 
-// Handles checkbox changes in the chore list.
+// Handle chore completion using event delegation.
 taskList.addEventListener('change', (event) => {
   if (event.target.dataset.action === 'toggle') {
     toggleTask(event.target.dataset.id);
   }
 });
 
-// Handles Edit, Save, and Delete button clicks.
+// Handle Edit, Save, and Delete button clicks.
 taskList.addEventListener('click', (event) => {
   const button = event.target.closest('button[data-action]');
   if (!button) return;
@@ -299,7 +320,7 @@ taskList.addEventListener('click', (event) => {
   if (action === 'delete') deleteTask(id);
 });
 
-// Saves inline edits with Enter and cancels with Escape.
+// Save edits with Enter and cancel with Escape.
 taskList.addEventListener('keydown', (event) => {
   if (event.target.dataset.action !== 'edit-input') return;
 
@@ -313,7 +334,7 @@ taskList.addEventListener('keydown', (event) => {
   }
 });
 
-// Updates the selected filter.
+// Change the active task filter.
 filterButtons.forEach((button) => {
   button.addEventListener('click', () => {
     currentFilter = button.dataset.filter;
@@ -322,14 +343,14 @@ filterButtons.forEach((button) => {
   });
 });
 
-// Searches chores as the user types.
+// Search chores as the user types.
 taskSearch.addEventListener('input', () => {
   searchText = taskSearch.value.trim();
   render();
 });
 
-// Connects the Clear Completed button.
+// Connect the Clear Completed button.
 clearCompletedButton.addEventListener('click', clearCompleted);
 
-// Displays saved chores when the page loads.
+// Display saved chores when the page loads.
 render();
