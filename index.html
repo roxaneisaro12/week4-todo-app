@@ -1,0 +1,163 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Family Chores helps you organize, track, and complete household tasks."
+    />
+    <title>Family Chores | Household Task Planner</title>
+  </head>
+
+  <body class="min-h-screen bg-[#f7f7f0] text-[#26352d]">
+    <header class="border-b border-[#e3e8df] bg-white">
+      <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-5 sm:px-6">
+        <a href="#" class="text-xl font-bold tracking-tight text-[#42634c]">
+          Family Chores
+        </a>
+        <span class="rounded-full bg-[#edf3e9] px-3 py-1 text-sm font-medium text-[#42634c]">
+          Our home, organized
+        </span>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12">
+      <section class="mb-8">
+        <p class="mb-2 text-sm font-semibold uppercase tracking-widest text-[#66856b]">
+          Household planner
+        </p>
+        <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">
+          A happier home starts here.
+        </h1>
+        <p class="mt-3 max-w-xl leading-7 text-[#68756b]">
+          Keep track of cleaning, cooking, laundry, and all the little things
+          that make a house feel like home.
+        </p>
+      </section>
+
+      <section class="rounded-2xl border border-[#e3e8df] bg-white p-5 shadow-sm sm:p-7">
+        <h2 class="text-lg font-semibold">Add a household chore</h2>
+        <p class="mt-1 text-sm text-[#68756b]">
+          What needs to get done today?
+        </p>
+
+        <form id="task-form" class="mt-5">
+          <label for="task-input" class="mb-2 block text-sm font-medium">
+            Chore name
+          </label>
+
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <input
+              id="task-input"
+              name="task"
+              type="text"
+              maxlength="100"
+              placeholder="e.g. Clean the kitchen"
+              autocomplete="off"
+              aria-describedby="form-error"
+              class="min-w-0 flex-1 rounded-xl border border-[#d8e0d5] px-4 py-3 outline-none transition focus:border-[#66856b] focus:ring-2 focus:ring-[#66856b]/30"
+            />
+
+            <button
+              type="submit"
+              class="rounded-xl bg-[#42634c] px-6 py-3 font-semibold text-white transition hover:bg-[#324d3a] focus:outline-none focus:ring-2 focus:ring-[#66856b] focus:ring-offset-2"
+            >
+              Add chore
+            </button>
+          </div>
+
+          <p id="form-error" class="mt-2 hidden text-sm text-red-700" role="alert"></p>
+
+          <div class="mt-4">
+            <label for="task-priority" class="mb-2 block text-sm font-medium">
+              Priority
+            </label>
+            <select
+              id="task-priority"
+              name="priority"
+              class="w-full rounded-xl border border-[#d8e0d5] bg-white px-4 py-3 outline-none focus:border-[#66856b] focus:ring-2 focus:ring-[#66856b]/30 sm:w-48"
+            >
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+        </form>
+      </section>
+
+      <section class="mt-6 rounded-2xl border border-[#e3e8df] bg-white p-5 shadow-sm sm:p-7">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 class="text-lg font-semibold">Your household tasks</h2>
+            <p id="task-counter" class="mt-1 text-sm text-[#68756b]" aria-live="polite">
+              0 tasks left
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-2" role="group" aria-label="Filter chores">
+            <button
+              type="button"
+              class="filter-button rounded-lg bg-[#42634c] px-4 py-2 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-[#66856b] focus:ring-offset-2"
+              data-filter="all"
+              aria-pressed="true"
+            >
+              All
+            </button>
+            <button
+              type="button"
+              class="filter-button rounded-lg bg-[#f0f3ed] px-4 py-2 text-sm font-medium text-[#42634c] hover:bg-[#e3eadd] focus:outline-none focus:ring-2 focus:ring-[#66856b] focus:ring-offset-2"
+              data-filter="active"
+              aria-pressed="false"
+            >
+              Active
+            </button>
+            <button
+              type="button"
+              class="filter-button rounded-lg bg-[#f0f3ed] px-4 py-2 text-sm font-medium text-[#42634c] hover:bg-[#e3eadd] focus:outline-none focus:ring-2 focus:ring-[#66856b] focus:ring-offset-2"
+              data-filter="completed"
+              aria-pressed="false"
+            >
+              Completed
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <label for="task-search" class="mb-2 block text-sm font-medium">
+            Search chores
+          </label>
+          <input
+            id="task-search"
+            type="search"
+            placeholder="Find a chore..."
+            class="w-full rounded-xl border border-[#d8e0d5] px-4 py-3 outline-none focus:border-[#66856b] focus:ring-2 focus:ring-[#66856b]/30"
+          />
+        </div>
+
+        <ul id="task-list" class="mt-5 space-y-3" aria-label="Household chores"></ul>
+
+        <p id="empty-state" class="py-8 text-center text-sm leading-6 text-[#68756b]">
+          Your home is a blank canvas. Add your first chore to get started.
+        </p>
+
+        <div class="mt-5 border-t border-[#e8ece5] pt-4">
+          <button
+            id="clear-completed"
+            type="button"
+            class="rounded-lg px-3 py-2 text-sm font-medium text-red-700 hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-300"
+          >
+            Clear completed chores
+          </button>
+        </div>
+      </section>
+
+      <footer class="py-8 text-center text-sm text-[#7b877d]">
+        Made for a calmer, happier home.
+      </footer>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
