@@ -70,7 +70,7 @@ Chores and the selected filter are saved in browser localStorage, allowing them 
 Building Family Chores helped me practise JavaScript state management, DOM manipulation, event handling, and localStorage. I learned how to validate user input and update the interface when tasks change. I used browser developer tools to inspect errors and troubleshoot issues during development. Testing each feature helped me check that adding, editing, deleting, filtering, and saving chores worked as expected. I also learned the importance of accessible controls and clear feedback for users. The project gave me more confidence in building an interactive web application with HTML, Tailwind CSS, and vanilla JavaScript.
 
 ## Videos
-https://drive.google.com/drive/u/0/home
+https://drive.google.com/file/d/1pexIwHrHHSSngluBJdh_GV7HVahY7Bno/view?usp=sharing
 
 ## Author
 
