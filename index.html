@@ -4,148 +4,252 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Family Chores makes household tasks easier to organize, share, and complete." />
-    <meta name="theme-color" content="#762D45" />
-    <title>Family Chores | A Happier Home</title>
+    <meta
+      name="description"
+      content="A simple and organized way to manage household chores."
+    />
+    <meta name="theme-color" content="#34483B" />
+    <title>Family Chores | Home Organizer</title>
   </head>
 
-  <body class="min-h-screen bg-[#F7F3F5] text-[#4A2634]">
-    <header class="border-b border-[#EAD8DF] bg-white/95">
-      <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 sm:px-8">
+  <body class="min-h-screen bg-[#F8F7F2] text-[#292D29]">
+    <header class="border-b border-[#E6E7DF] bg-white">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <a href="#" class="flex items-center gap-3" aria-label="Family Chores home">
-          <span class="flex size-11 items-center justify-center rounded-2xl bg-[#762D45] text-lg font-bold text-white">FC</span>
+          <span class="flex size-10 items-center justify-center rounded-xl bg-[#34483B] text-sm font-bold text-white">
+            FC
+          </span>
           <span>
-            <span class="block text-lg font-bold tracking-tight text-[#762D45]">Family Chores</span>
-            <span class="block text-xs text-[#9B7B89]">A little help goes a long way</span>
+            <span class="block text-base font-bold text-[#292D29]">
+              Family Chores
+            </span>
+            <span class="block text-xs text-[#737A70]">
+              A simpler way to share the work
+            </span>
           </span>
         </a>
 
-        <span class="hidden rounded-full border border-[#EAD8DF] bg-[#F9E2E7] px-4 py-2 text-sm font-medium text-[#762D45] sm:inline-flex">
-          Our home, organized
+        <span class="hidden text-sm font-medium text-[#526653] sm:block">
+          Home, in harmony.
         </span>
       </div>
     </header>
 
-    <main class="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-12">
-      <section class="relative mb-8 overflow-hidden rounded-[2rem] bg-[#762D45] px-6 py-9 text-white shadow-lg shadow-[#762D45]/10 sm:px-10 sm:py-12">
-        <div class="pointer-events-none absolute -right-12 -top-16 size-56 rounded-full border-[35px] border-white/5"></div>
-        <div class="pointer-events-none absolute -bottom-20 right-28 size-44 rounded-full bg-[#C77B98]/20 blur-2xl"></div>
+    <main class="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-10">
+      <section class="mb-7">
+        <p class="text-sm font-semibold text-[#526653]">
+          YOUR HOUSEHOLD PLANNER
+        </p>
+        <h1 class="mt-2 text-3xl font-bold tracking-tight text-[#292D29] sm:text-4xl">
+          A little order goes a long way.
+        </h1>
+        <p class="mt-3 max-w-2xl text-sm leading-6 text-[#737A70] sm:text-base">
+          Keep track of everyday chores, set priorities, and see what still needs
+          to be done. One small task at a time.
+        </p>
+      </section>
 
-        <div class="relative z-10 max-w-2xl">
-          <span class="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#F9E2E7]">
-            Your household planner
-          </span>
-          <h1 class="mt-5 text-3xl font-bold leading-tight tracking-tight sm:text-5xl">
-            A happier home<br class="hidden sm:block" /> starts with small things.
-          </h1>
-          <p class="mt-4 max-w-xl text-sm leading-7 text-white/80 sm:text-base">
-            Keep the everyday chores under control. Plan your tasks, set priorities, and celebrate every little thing you get done.
+      <section
+        aria-label="Chore statistics"
+        class="mb-7 grid grid-cols-3 gap-3 sm:gap-5"
+      >
+        <article class="rounded-xl border border-[#E6E7DF] bg-white p-3 sm:p-5">
+          <p class="text-xs font-medium text-[#737A70] sm:text-sm">
+            Total chores
           </p>
-          <a href="#task-form" class="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#F9E2E7] px-5 py-3 text-sm font-bold text-[#762D45] transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#762D45]">
-            + Add a household chore
-          </a>
-        </div>
-      </section>
-
-      <section aria-label="Chore statistics" class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <article class="rounded-2xl border border-[#EAD8DF] bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <div class="flex items-center justify-between gap-3">
-            <p class="text-sm font-medium text-[#795E69]">Total chores</p>
-            <span class="flex size-10 items-center justify-center rounded-xl bg-[#F9E2E7] text-lg text-[#762D45]" aria-hidden="true">▤</span>
-          </div>
-          <p id="total-stat" class="mt-3 text-3xl font-bold tracking-tight text-[#762D45]">0</p>
-          <p class="mt-1 text-xs text-[#9B7B89]">Tasks on your list</p>
+          <p id="total-stat" class="mt-2 text-2xl font-bold text-[#34483B] sm:text-3xl">
+            0
+          </p>
         </article>
 
-        <article class="rounded-2xl border border-[#EAD8DF] bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <div class="flex items-center justify-between gap-3">
-            <p class="text-sm font-medium text-[#795E69]">Still to do</p>
-            <span class="flex size-10 items-center justify-center rounded-xl bg-[#F9E2E7] text-lg text-[#762D45]" aria-hidden="true">◷</span>
-          </div>
-          <p id="active-stat" class="mt-3 text-3xl font-bold tracking-tight text-[#762D45]">0</p>
-          <p class="mt-1 text-xs text-[#9B7B89]">One step at a time</p>
+        <article class="rounded-xl border border-[#E6E7DF] bg-white p-3 sm:p-5">
+          <p class="text-xs font-medium text-[#737A70] sm:text-sm">
+            To do
+          </p>
+          <p id="active-stat" class="mt-2 text-2xl font-bold text-[#34483B] sm:text-3xl">
+            0
+          </p>
         </article>
 
-        <article class="rounded-2xl border border-[#EAD8DF] bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <div class="flex items-center justify-between gap-3">
-            <p class="text-sm font-medium text-[#795E69]">Completed</p>
-            <span class="flex size-10 items-center justify-center rounded-xl bg-[#F9E2E7] text-lg text-[#762D45]" aria-hidden="true">✓</span>
-          </div>
-          <p id="completed-stat" class="mt-3 text-3xl font-bold tracking-tight text-[#762D45]">0</p>
-          <p class="mt-1 text-xs text-[#9B7B89]">Every little win counts</p>
+        <article class="rounded-xl border border-[#E6E7DF] bg-white p-3 sm:p-5">
+          <p class="text-xs font-medium text-[#737A70] sm:text-sm">
+            Completed
+          </p>
+          <p id="completed-stat" class="mt-2 text-2xl font-bold text-[#34483B] sm:text-3xl">
+            0
+          </p>
         </article>
       </section>
 
-      <div class="grid grid-cols-1 items-start gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-        <section class="rounded-2xl border border-[#EAD8DF] bg-white p-5 shadow-sm sm:p-7">
-          <div class="mb-6">
-            <p class="text-xs font-bold uppercase tracking-[0.18em] text-[#9B526D]">Make a plan</p>
-            <h2 class="mt-2 text-xl font-bold text-[#762D45]">Add a household chore</h2>
-            <p class="mt-2 text-sm leading-6 text-[#795E69]">Small steps make a big difference. What needs doing?</p>
+      <div class="grid grid-cols-1 items-start gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+        <section class="rounded-2xl border border-[#E6E7DF] bg-white p-5 sm:p-6">
+          <div class="mb-5">
+            <h2 class="text-lg font-bold text-[#292D29]">
+              Add a chore
+            </h2>
+            <p class="mt-1 text-sm text-[#737A70]">
+              What needs to get done?
+            </p>
           </div>
 
           <form id="task-form">
-            <label for="task-input" class="mb-2 block text-sm font-semibold text-[#4A2634]">Chore name</label>
-            <input id="task-input" name="task" type="text" maxlength="100" placeholder="e.g. Clean the kitchen" autocomplete="off" aria-describedby="form-error" class="w-full rounded-xl border border-[#E2C7D1] bg-[#FFFCFD] px-4 py-3.5 text-sm outline-none transition placeholder:text-[#B59AA5] focus:border-[#762D45] focus:ring-4 focus:ring-[#C77B98]/15" />
+            <label
+              for="task-input"
+              class="mb-2 block text-sm font-semibold text-[#292D29]"
+            >
+              Chore name
+            </label>
 
-            <p id="form-error" class="mt-2 hidden text-sm text-red-700" role="alert"></p>
+            <input
+              id="task-input"
+              name="task"
+              type="text"
+              maxlength="100"
+              placeholder="e.g. Wash the dishes"
+              autocomplete="off"
+              aria-describedby="form-error"
+              class="w-full rounded-lg border border-[#D9DED5] bg-white px-3.5 py-3 text-sm outline-none transition placeholder:text-[#92998F] focus:border-[#526653] focus:ring-2 focus:ring-[#526653]/15"
+            />
 
-            <label for="task-priority" class="mb-2 mt-5 block text-sm font-semibold text-[#4A2634]">Priority level</label>
-            <select id="task-priority" name="priority" class="w-full rounded-xl border border-[#E2C7D1] bg-[#FFFCFD] px-4 py-3.5 text-sm outline-none focus:border-[#762D45] focus:ring-4 focus:ring-[#C77B98]/15">
+            <p
+              id="form-error"
+              class="mt-2 hidden text-sm text-red-700"
+              role="alert"
+            ></p>
+
+            <label
+              for="task-priority"
+              class="mb-2 mt-5 block text-sm font-semibold text-[#292D29]"
+            >
+              Priority
+            </label>
+
+            <select
+              id="task-priority"
+              name="priority"
+              class="w-full rounded-lg border border-[#D9DED5] bg-white px-3.5 py-3 text-sm outline-none focus:border-[#526653] focus:ring-2 focus:ring-[#526653]/15"
+            >
               <option value="low">Low priority</option>
               <option value="medium" selected>Medium priority</option>
               <option value="high">High priority</option>
             </select>
 
-            <button type="submit" class="mt-5 w-full rounded-xl bg-[#762D45] px-5 py-3.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#5D2035] focus:outline-none focus:ring-4 focus:ring-[#C77B98]/30">
-              Add chore to my list
+            <button
+              type="submit"
+              class="mt-5 w-full rounded-lg bg-[#34483B] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#26372C] focus:outline-none focus:ring-2 focus:ring-[#526653] focus:ring-offset-2"
+            >
+              + Add chore
             </button>
-            <p class="mt-3 text-center text-xs text-[#9B7B89]">Tip: Press Enter to add a chore quickly.</p>
+
+            <p class="mt-3 text-xs text-[#737A70]">
+              Quick tip: press Enter to add your chore.
+            </p>
           </form>
         </section>
 
-        <section class="min-w-0 rounded-2xl border border-[#EAD8DF] bg-white p-5 shadow-sm sm:p-7">
-          <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <section class="min-w-0 rounded-2xl border border-[#E6E7DF] bg-white p-5 sm:p-6">
+          <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p class="text-xs font-bold uppercase tracking-[0.18em] text-[#9B526D]">Your progress</p>
-              <h2 class="mt-2 text-xl font-bold text-[#762D45]">Household tasks</h2>
-              <p id="task-counter" class="mt-2 text-sm text-[#795E69]" aria-live="polite">0 tasks left</p>
-            </div>
-            <span class="inline-flex w-fit items-center rounded-full bg-[#F9E2E7] px-3 py-1.5 text-xs font-semibold text-[#762D45]">One day at a time</span>
-          </div>
-
-          <div class="mt-6">
-            <label for="task-search" class="mb-2 block text-sm font-semibold text-[#4A2634]">Find a chore</label>
-            <div class="relative">
-              <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#9B7B89]" aria-hidden="true">⌕</span>
-              <input id="task-search" type="search" placeholder="Search your chores..." class="w-full rounded-xl border border-[#E2C7D1] bg-[#FFFCFD] py-3 pl-10 pr-4 text-sm outline-none transition placeholder:text-[#B59AA5] focus:border-[#762D45] focus:ring-4 focus:ring-[#C77B98]/15" />
+              <h2 class="text-lg font-bold text-[#292D29]">
+                Household tasks
+              </h2>
+              <p
+                id="task-counter"
+                class="mt-1 text-sm text-[#737A70]"
+                aria-live="polite"
+              >
+                0 tasks left
+              </p>
             </div>
           </div>
 
-          <div class="mt-5 flex flex-wrap gap-2" role="group" aria-label="Filter chores">
-            <button type="button" class="filter-button rounded-lg bg-[#762D45] px-4 py-2.5 text-sm font-semibold text-white transition focus:outline-none focus:ring-2 focus:ring-[#C77B98]" data-filter="all" aria-pressed="true">All chores</button>
-            <button type="button" class="filter-button rounded-lg bg-[#F7F3F5] px-4 py-2.5 text-sm font-semibold text-[#762D45] transition hover:bg-[#F9E2E7] focus:outline-none focus:ring-2 focus:ring-[#C77B98]" data-filter="active" aria-pressed="false">To do</button>
-            <button type="button" class="filter-button rounded-lg bg-[#F7F3F5] px-4 py-2.5 text-sm font-semibold text-[#762D45] transition hover:bg-[#F9E2E7] focus:outline-none focus:ring-2 focus:ring-[#C77B98]" data-filter="completed" aria-pressed="false">Completed</button>
+          <div class="mt-5">
+            <label
+              for="task-search"
+              class="mb-2 block text-sm font-semibold text-[#292D29]"
+            >
+              Search chores
+            </label>
+
+            <input
+              id="task-search"
+              type="search"
+              placeholder="Find a task..."
+              class="w-full rounded-lg border border-[#D9DED5] bg-white px-3.5 py-3 text-sm outline-none transition placeholder:text-[#92998F] focus:border-[#526653] focus:ring-2 focus:ring-[#526653]/15"
+            />
           </div>
 
-          <ul id="task-list" class="mt-5 space-y-3" aria-label="Household chores"></ul>
+          <div
+            class="mt-4 flex flex-wrap gap-2"
+            role="group"
+            aria-label="Filter chores"
+          >
+            <button
+              type="button"
+              class="filter-button rounded-lg bg-[#34483B] px-3.5 py-2 text-sm font-semibold text-white transition focus:outline-none focus:ring-2 focus:ring-[#526653]"
+              data-filter="all"
+              aria-pressed="true"
+            >
+              All
+            </button>
 
-          <div id="empty-state" class="my-5 rounded-2xl border border-dashed border-[#E2C7D1] bg-[#FFFCFD] px-5 py-10 text-center">
-            <span class="mx-auto flex size-12 items-center justify-center rounded-2xl bg-[#F9E2E7] text-2xl text-[#762D45]" aria-hidden="true">♡</span>
-            <p class="mt-4 font-semibold text-[#762D45]">A fresh start</p>
-            <p class="mt-2 text-sm leading-6 text-[#795E69]">Your chore list is empty. Add your first task and make today a little easier.</p>
+            <button
+              type="button"
+              class="filter-button rounded-lg bg-[#F0F1EB] px-3.5 py-2 text-sm font-semibold text-[#34483B] transition hover:bg-[#E5E9E0] focus:outline-none focus:ring-2 focus:ring-[#526653]"
+              data-filter="active"
+              aria-pressed="false"
+            >
+              To do
+            </button>
+
+            <button
+              type="button"
+              class="filter-button rounded-lg bg-[#F0F1EB] px-3.5 py-2 text-sm font-semibold text-[#34483B] transition hover:bg-[#E5E9E0] focus:outline-none focus:ring-2 focus:ring-[#526653]"
+              data-filter="completed"
+              aria-pressed="false"
+            >
+              Completed
+            </button>
           </div>
 
-          <div class="mt-5 flex flex-col gap-3 border-t border-[#EAD8DF] pt-5 sm:flex-row sm:items-center sm:justify-between">
-            <p class="text-xs leading-5 text-[#9B7B89]">Every completed chore is progress worth celebrating.</p>
-            <button id="clear-completed" type="button" class="rounded-lg px-3 py-2 text-left text-sm font-semibold text-[#762D45] transition hover:bg-[#F9E2E7] focus:outline-none focus:ring-2 focus:ring-[#C77B98]">Clear completed</button>
+          <ul
+            id="task-list"
+            class="mt-5 space-y-3"
+            aria-label="Household chores"
+          ></ul>
+
+          <div
+            id="empty-state"
+            class="my-5 rounded-xl border border-dashed border-[#D9DED5] bg-[#FAFAF7] px-4 py-8 text-center"
+          >
+            <p class="text-base font-semibold text-[#34483B]">
+              Nothing on the list yet
+            </p>
+            <p class="mt-2 text-sm leading-6 text-[#737A70]">
+              Add your first chore to get started.
+            </p>
+          </div>
+
+          <div class="mt-5 flex flex-col gap-3 border-t border-[#E6E7DF] pt-4 sm:flex-row sm:items-center sm:justify-between">
+            <p class="text-xs text-[#737A70]">
+              Small efforts make a happier home.
+            </p>
+
+            <button
+              id="clear-completed"
+              type="button"
+              class="rounded-lg px-3 py-2 text-left text-sm font-semibold text-[#526653] transition hover:bg-[#F0F1EB] focus:outline-none focus:ring-2 focus:ring-[#526653]"
+            >
+              Clear completed
+            </button>
           </div>
         </section>
       </div>
 
-      <footer class="py-8 text-center">
-        <p class="text-sm font-medium text-[#762D45]">Made with care for a calmer, happier home.</p>
-        <p class="mt-1 text-xs text-[#9B7B89]">One small task at a time.</p>
+      <footer class="py-7 text-center">
+        <p class="text-xs text-[#737A70]">
+          Family Chores · A little order, every day.
+        </p>
       </footer>
     </main>
 

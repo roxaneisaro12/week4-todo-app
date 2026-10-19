@@ -1,56 +1,68 @@
 
 @import "tailwindcss";
 
-/* Set the app's default colours and typography. */
+/* Use a clean, consistent font and warm neutral colors. */
 :root {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #4a2634;
-  background: #f7f3f5;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: #292d29;
+  background: #f8f7f2;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Make sizing predictable for every element. */
+/* Keep element dimensions predictable. */
 * {
   box-sizing: border-box;
 }
 
-/* Remove default spacing and fill the screen. */
+/* Set the page's default background and minimum size. */
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #f7f3f5;
+  background: #f8f7f2;
 }
 
-/* Keep form controls consistent with the design. */
+/* Keep form controls consistent with the rest of the interface. */
 button,
 input,
 select {
   font: inherit;
 }
 
-/* Make buttons feel responsive when hovered. */
+/* Make buttons feel interactive. */
 button {
   cursor: pointer;
 }
 
-/* Use a clear focus indicator for keyboard users. */
+/* Keep keyboard focus visible and accessible. */
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 3px solid #c77b98;
-  outline-offset: 3px;
+  outline: 2px solid #526653;
+  outline-offset: 2px;
 }
 
-/* Make completed chores visibly different. */
+/* Use forest green for completed-task checkboxes. */
 input[type="checkbox"] {
-  accent-color: #762d45;
+  accent-color: #34483b;
 }
 
-/* Prevent long chore names from overflowing their cards. */
+/* Prevent long chore names from breaking the layout. */
 li {
   overflow-wrap: anywhere;
+}
+
+/* Respect users who prefer less motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
